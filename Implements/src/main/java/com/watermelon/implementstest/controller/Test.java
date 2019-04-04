@@ -9,6 +9,6 @@ import org.springframework.boot.jackson.JsonComponent;
  * @date 2019/04/04
  */
 @JsonComponent
-public class Test {
+public class TestModify {
 
 }
