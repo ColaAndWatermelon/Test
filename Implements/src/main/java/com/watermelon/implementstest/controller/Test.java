@@ -10,5 +10,7 @@ import org.springframework.boot.jackson.JsonComponent;
  */
 @JsonComponent
 public class TestModify {
+  public void te(){
+  }
 
 }
