@@ -2,14 +2,18 @@ package com.watermelon.implementstest.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.watermelon.implementstest.dto.User;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
- * Demo class
+ * API test class
  *
  * @author yanyan
  * @date 2019/04/03
@@ -17,6 +21,9 @@ import java.util.Map;
 @Controller
 public class FirstTest {
 
+    /**
+     * json
+     */
     @RequestMapping("test")
     @ResponseBody
     public Map<String,String> test(){
@@ -25,6 +32,9 @@ public class FirstTest {
         return hashMap;
     }
 
+    /**
+     * json
+     */
     @ResponseBody
     @PostMapping(value = "test2", produces = "application/json;charset=UTF-8")
     public String getByJSON(@RequestBody JSONObject jsonParam) {
@@ -38,4 +48,30 @@ public class FirstTest {
         return result.toJSONString();
     }
 
+
+    /**
+     * x-www-form-urlencoded
+     */
+    @ResponseBody
+    @PostMapping("/prm/parameterDownHandler")
+    public String  downHanler(@RequestParam("username")String username,@RequestParam("password")String password ){
+        JSONObject jsonObject = new JSONObject();
+        System.out.println("name: "+username+"; "+"password: "+password);
+        jsonObject.put("username","yan");
+        jsonObject.put("password","123456");
+        return jsonObject.toJSONString();
+    }
+
+    /**
+    *  xml
+    * */
+    @PostMapping(value = "/user",
+            consumes = MediaType.APPLICATION_XML_VALUE,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public User create(@RequestBody User user) {
+        user.setName("username" + user.getName());
+        user.setAge(user.getAge() + 100);
+        return user;
+    }
 }
