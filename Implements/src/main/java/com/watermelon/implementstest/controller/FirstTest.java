@@ -7,7 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -54,14 +56,13 @@ public class FirstTest {
      */
     @ResponseBody
     @PostMapping("/prm/parameterDownHandler")
-    public String  downHanler(@RequestParam("username")String username,@RequestParam("password")String password,@RequestParam("gender")String gender){
+    public String  downHanler(@RequestParam("username")String username,@RequestParam("password")String password ){
         JSONObject jsonObject = new JSONObject();
-        System.out.println("name: "+username+"; "+"password: "+password+" gender:"+gender);
+        System.out.println("name: "+username+"; "+"password: "+password);
         jsonObject.put("username","yan");
         jsonObject.put("password","123456");
         return jsonObject.toJSONString();
     }
-
 
     /**
     *  xml
