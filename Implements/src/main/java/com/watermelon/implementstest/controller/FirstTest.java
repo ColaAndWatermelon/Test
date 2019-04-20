@@ -44,6 +44,7 @@ public class FirstTest {
         result.put("method", "json");
         result.put("data", jsonParam);
         result.put("yan","test");
+        result.put("yanyan","cool");
         return result.toJSONString();
     }
 
